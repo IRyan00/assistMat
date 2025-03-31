@@ -31,11 +31,12 @@ export const createProfile = async (req, res, next) => {
 
     fs.unlinkSync(req.file.path);
 
-    const { name, desc } = req.body;
+    const { name, desc, school } = req.body;
 
     const newProfile = new Profile({
       name,
       desc,
+      school,
       image: result.secure_url,
       public_id: result.public_id,
     });
@@ -50,7 +51,7 @@ export const createProfile = async (req, res, next) => {
 
 export const getProfile = async (req, res, next) => {
   try {
-    const profiles = await Profile.find({ userId: req.user });
+    const profiles = await Profile.find();
     res.status(200).json({ profiles });
   } catch (error) {
     console.error(error);
@@ -59,7 +60,7 @@ export const getProfile = async (req, res, next) => {
 };
 export const updateProfile = async (req, res, next) => {
   try {
-    const { name, desc } = req.body;
+    const { name, desc, school } = req.body;
     const { id: profileId } = req.params;
 
     const originalProfile = await Profile.findById(profileId);
@@ -85,6 +86,7 @@ export const updateProfile = async (req, res, next) => {
       {
         name,
         desc,
+        school,
         public_id,
         image,
       },

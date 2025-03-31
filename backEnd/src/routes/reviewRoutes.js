@@ -9,8 +9,8 @@ import { protect } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/create", protect, createReview);
-router.get("/get", protect, getReviews);
+router.post("/create", createReview);
+router.get("/get", getReviews);
 router.delete("/delete/:id", protect, deleteReview);
 
 export default router;

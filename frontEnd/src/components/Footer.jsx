@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import Spinner from "react-bootstrap/Spinner";
-import { set } from "mongoose";
 
 const SERVICE_ID = import.meta.env.VITE_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
 
 const Footer = () => {
-  const [alert, setAlert] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const [alert, setAlert] = React.useState(null);
+  const [isLoading, setIsLoading] = React.useState(false);
 
-  const sendEmail = (e) => {
-    e.preventDefault();
+  const onSubmit = (data, e) => {
     setIsLoading(true);
-
     emailjs
       .sendForm(`${SERVICE_ID}`, `${TEMPLATE_ID}`, e.target, `${PUBLIC_KEY}`)
       .then(
@@ -37,22 +40,22 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-dark text-light py-4">
+    <footer id="contact-section" className="bg-dark text-light py-4">
       <Container>
         <Row>
           <Col md={9} className="mx-auto">
-            <h5 className="text-center my-5">Contactez-moi</h5>
-            <Form onSubmit={sendEmail}>
+            <h3 className="h2 text-center my-5">Contactez-moi</h3>
+            <Form onSubmit={handleSubmit(onSubmit)}>
               <Row className="mb-2">
                 <Col md={6} className="mb-2">
                   <Form.Group>
                     <Form.Label htmlFor="name">Nom :</Form.Label>
                     <Form.Control
                       type="text"
-                      name="name"
+                      {...register("name", { required: true })}
                       id="name"
-                      required
                       placeholder="Votre nom"
+                      isInvalid={!!errors.name}
                     />
                   </Form.Group>
                 </Col>
@@ -61,10 +64,10 @@ const Footer = () => {
                     <Form.Label htmlFor="firstname">Prénom :</Form.Label>
                     <Form.Control
                       type="text"
-                      name="firstname"
+                      {...register("firstname", { required: true })}
                       id="firstname"
-                      required
                       placeholder="Votre prénom"
+                      isInvalid={!!errors.firstname}
                     />
                   </Form.Group>
                 </Col>
@@ -72,13 +75,13 @@ const Footer = () => {
               <Row className="mb-2">
                 <Col md={6} className="mb-2">
                   <Form.Group>
-                    <Form.Label htmlFor="emailFrom">Email :</Form.Label>
+                    <Form.Label htmlFor="email_from">Email :</Form.Label>
                     <Form.Control
                       type="email"
-                      name="email_from"
+                      {...register("email_from", { required: true })}
                       id="email_from"
-                      required
                       placeholder="Votre email"
+                      isInvalid={!!errors.email_from}
                     />
                   </Form.Group>
                 </Col>
@@ -87,10 +90,10 @@ const Footer = () => {
                     <Form.Label htmlFor="phone">Numéro :</Form.Label>
                     <Form.Control
                       type="tel"
-                      name="phone"
+                      {...register("phone", { required: true })}
                       id="phone"
-                      required
                       placeholder="Votre numéro"
+                      isInvalid={!!errors.phone}
                     />
                   </Form.Group>
                 </Col>
@@ -99,11 +102,11 @@ const Footer = () => {
                 <Form.Label htmlFor="message">Message :</Form.Label>
                 <Form.Control
                   as="textarea"
-                  name="message"
+                  {...register("message", { required: true })}
                   id="message"
-                  required
                   rows={3}
                   placeholder="Votre message"
+                  isInvalid={!!errors.message}
                 />
               </Form.Group>
               <div className="d-flex justify-content-center">

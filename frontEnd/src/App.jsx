@@ -5,8 +5,8 @@ import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import About from "./pages/About.jsx";
 import Reviews from "./pages/Reviews.jsx";
-// import Dashboard from "./pages/Dashboard.jsx";
-// import ProtectedRoute from "./utils/ProtectDashboard.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import ProtectDashboard from "../utils/ProtectDashboard.jsx";
 
 function App() {
   return (
@@ -18,15 +18,15 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/reviews" element={<Reviews />} />
-          {/* <Route
+          <Route
             path="/dashboard"
             element={
-              <ProtectedRoute>
-              <Dashboard />
-              <ProtectedRoute />
-              </ProtectedRoute>
-              }
-              /> */}
+              <ProtectDashboard>
+                <Dashboard />
+                <ProtectDashboard />
+              </ProtectDashboard>
+            }
+          />
 
           <Route path="/login" element={<Login />} />
         </Routes>

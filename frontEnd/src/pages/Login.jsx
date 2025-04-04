@@ -7,7 +7,7 @@ import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 const API_URL = import.meta.env.VITE_API_URL;
 const Login = () => {
   useEffect(() => {
-    document.title = "Portfolio - Connexion";
+    document.title = "Admin Connexion";
   }, []);
 
   const navigation = useNavigate();
@@ -26,7 +26,7 @@ const Login = () => {
       localStorage.setItem("token", response.data.token);
       setTimeout(() => {
         navigation("/");
-        alert("Login successful");
+        alert("Connexion réussie");
       }, 300);
     } catch (error) {
       console.error("Login failed:", {

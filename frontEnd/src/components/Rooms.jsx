@@ -1,4 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
 const Rooms = () => {
   return (
@@ -15,7 +15,7 @@ const Rooms = () => {
               consequatur ut impedit, nulla, est non!
             </p>
             <img
-              className="img-fluid col-8 mx-auto d-flex mb-5"
+              className="img-fluid col-12 col-lg-8 mx-auto d-flex mb-5"
               src="https://placehold.co/600x400/EEE/31343C"
               alt="Salon"
             />
@@ -29,7 +29,7 @@ const Rooms = () => {
               iusto impedit.
             </p>
             <img
-              className="img-fluid col-8 mx-auto d-flex"
+              className="img-fluid col-12 col-lg-8 mx-auto d-flex"
               src="https://placehold.co/600x400/EEE/31343C"
               alt="Chambre"
             />

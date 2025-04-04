@@ -9,7 +9,7 @@ const Profiles = ({ profiles }) => {
             {profiles.name}
           </h1>
           <img
-            className="img-fluid col-5 mx-auto"
+            className="img-fluid col-11 col-sm-9 col-md-7 col-lg-5 mx-auto"
             src={profiles.image}
             alt={profiles.name}
           />

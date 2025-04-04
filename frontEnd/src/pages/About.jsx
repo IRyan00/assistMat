@@ -20,6 +20,7 @@ const Profiles = () => {
   };
 
   useEffect(() => {
+    document.title = "À propos";
     const fetchProfiles = async () => {
       try {
         const response = await axios.get(`${API_URL}/api/profile/get`, {

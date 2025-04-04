@@ -6,10 +6,14 @@ const reviewSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+      minlenght: 2,
+      maxlength: 20,
     },
     message: {
       type: String,
       required: true,
+      minlenght: 10,
+      maxlength: 500,
     },
   },
   {

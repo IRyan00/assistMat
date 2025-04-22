@@ -35,6 +35,7 @@ export const login = async (req, res) => {
   try {
     const { name, password } = req.body;
     const userLogin = await User.findOne({ name });
+
     if (!userLogin) {
       return res.status(404).json({ message: "The user doesn't exist " });
     }
@@ -49,6 +50,7 @@ export const login = async (req, res) => {
       httpOnly: true,
       secure: true,
     });
+
     res.status(201).json({ userLogin, token });
   } catch (error) {
     console.error(error);

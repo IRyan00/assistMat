@@ -1,25 +1,36 @@
-import JWT from "jsonwebtoken";
+import jwt from "jsonwebtoken";
+import asyncHandler from "express-async-handler";
 import User from "../models/User.js";
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
-export const protect = async (req, res, next) => {
+export const protect = asyncHandler(async (req, res, next) => {
+  let token;
+
+  // Cherche d'abord dans les headers (Authorization: Bearer xxx)
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    token = req.headers.authorization.split(" ")[1];
+  }
+  // Sinon, cherche dans les cookies (jwt)
+  else if (req.cookies.jwt) {
+    token = req.cookies.jwt;
+  }
+
+  if (!token) {
+    res.status(401);
+    throw new Error("Non autorisé, pas de token");
+  }
+
   try {
-    const token = req.cookies.jwt;
-    if (!token) {
-      return res.status(401).json({ message: "Unauthorized" });
-    }
-
-    const decoded = JWT.verify(token, JWT_SECRET);
-    const user = await User.findById(decoded._id);
-
-    if (!user) {
-      return res.status(401).json({ message: "Unauthorized" });
-    }
-    req.user = user;
+    const decoded = jwt.verify(token, JWT_SECRET);
+    req.user = await User.findById(decoded._id).select("-password");
     next();
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server error" });
+    console.error("Erreur d'authentification:", error);
+    res.status(401);
+    throw new Error("Non autorisé, token invalide");
   }
-};
+});

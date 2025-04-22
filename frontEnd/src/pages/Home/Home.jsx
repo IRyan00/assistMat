@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import Carousel from "../components/Carousel";
-import WcmInfos from "../components/WcmInfos";
+import Carousel from "../../components/Carousel/Carousel.jsx";
+import WcmInfos from "../../components/Wcminfos/WcmInfos.jsx";
 import { FaArrowDown } from "react-icons/fa";
-import StaticAbout from "../components/StaticAbout";
-import Fquestions from "../components/Fquestions";
+import StaticAbout from "../../components/StaticAbout/StaticAbout.jsx";
+import Fquestions from "../../components/Fquestions/Fquestions.jsx";
 
 const Home = () => {
   useEffect(() => {
@@ -14,7 +14,7 @@ const Home = () => {
     <>
       <Carousel />
 
-      <h1 className="text-center my-5 bg-white display-4 py-5">
+      <h1 className="text-center my-5 display-4 py-5">
         {" "}
         <a href="#presentation" className="text-dark">
           <FaArrowDown size={25} />

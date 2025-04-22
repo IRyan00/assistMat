@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Profile from "../components/Profile";
-import Rooms from "../components/Rooms";
+import Profile from "../../components/Profile/Profile.jsx";
+import Rooms from "../../components/Rooms/Rooms.jsx";
 
 import { Container, Row, Col } from "react-bootstrap";
 

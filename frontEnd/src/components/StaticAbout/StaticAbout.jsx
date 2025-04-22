@@ -1,8 +1,9 @@
 import { Container, Row, Col } from "react-bootstrap";
+import "./StaticAbout.css";
 
 const StaticAbout = () => {
   return (
-    <Container fluid className="p-5 my-5 bg-dark text-light" id="presentation">
+    <Container fluid className="p-5 my-5" id="presentation">
       <Row className="my-5 justify-content-center text-center">
         <Col lg={8}>
           <h1 className="display-4 fw-bold mb-5">Assistante maternelle</h1>

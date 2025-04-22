@@ -1,4 +1,5 @@
 import React from "react";
+import "./Footer.css";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import { useForm } from "react-hook-form";
@@ -40,7 +41,7 @@ const Footer = () => {
   };
 
   return (
-    <footer id="contact-section" className="bg-dark text-light py-4">
+    <footer id="contact-section" className="py-4">
       <Container>
         <Row>
           <Col md={9} className="mx-auto">
@@ -111,10 +112,11 @@ const Footer = () => {
               </Form.Group>
               <div className="d-flex justify-content-center">
                 <Button
+                  id="submit-button"
                   variant="success"
                   type="submit"
                   disabled={isLoading}
-                  className="col-3 my-3"
+                  className="col-3 my-3 border-0"
                 >
                   {isLoading ? (
                     <Spinner animation="border" size="sm" />
@@ -136,13 +138,13 @@ const Footer = () => {
           <hr className="my-5 col-10 mx-auto" />
           <Col md={6} className="text-center mx-auto">
             <div className="d-flex justify-content-center gap-3">
-              <a href="#" className="text-light">
+              <a href="#" className="text-black">
                 <FaFacebook size={30} />
               </a>
-              <a href="#" className="text-light">
+              <a href="#" className="text-black">
                 <FaTwitter size={30} />
               </a>
-              <a href="#" className="text-light">
+              <a href="#" className="text-black">
                 <FaInstagram size={30} />
               </a>
             </div>

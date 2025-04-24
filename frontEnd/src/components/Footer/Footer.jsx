@@ -6,9 +6,13 @@ import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import Spinner from "react-bootstrap/Spinner";
 
+import useReCaptchaV3 from "../../hooks/reCaptchaV3";
+
 const SERVICE_ID = import.meta.env.VITE_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
+
+const VITE_RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 const Footer = () => {
   const {
@@ -18,26 +22,38 @@ const Footer = () => {
   } = useForm();
   const [alert, setAlert] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
+  const executeRecaptcha = useReCaptchaV3(VITE_RECAPTCHA_SITE_KEY);
 
-  const onSubmit = (data, e) => {
+  const onSubmit = async (data) => {
     setIsLoading(true);
-    emailjs
-      .sendForm(`${SERVICE_ID}`, `${TEMPLATE_ID}`, e.target, `${PUBLIC_KEY}`)
-      .then(
-        () => {
+    const token = await executeRecaptcha("contactForm");
+    if (token) {
+      emailjs
+        .send(
+          SERVICE_ID,
+          TEMPLATE_ID,
+          { ...data, "g-recaptcha-response": token },
+          PUBLIC_KEY
+        )
+        .then(() => {
           setAlert({
             type: "success",
             message: "Message envoyé !",
           });
-          e.target.reset();
-        },
-        () => {
-          setAlert({ type: "danger", message: "Échec de l'envoi du message." });
-        }
-      )
-      .finally(() => {
-        setIsLoading(false);
-      });
+        })
+        .catch(() => {
+          setAlert({
+            type: "danger",
+            message: "Échec de l'envoi du message.",
+          });
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    } else {
+      setAlert({ type: "danger", message: "Veuillez valider le recaptcha." });
+      setIsLoading(false);
+    }
   };
 
   return (

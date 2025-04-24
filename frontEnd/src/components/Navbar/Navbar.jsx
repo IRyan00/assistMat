@@ -30,11 +30,7 @@ function CustomNavbar() {
 
   return (
     <>
-      <Navbar
-        expand="lg"
-        className="py-3 sticky-top"
-        // data-bs-theme="dark"
-      >
+      <Navbar expand="lg" className="py-3 sticky-top">
         <Container>
           <Navbar.Brand as={Link} to="/" className="fw-bold">
             Assistante maternelle
@@ -54,9 +50,6 @@ function CustomNavbar() {
               </Nav.Link>
               <Nav.Link as={Link} to="/about" className="px-3 fw-bold">
                 A propos
-              </Nav.Link>
-              <Nav.Link as={Link} to="/reviews" className="px-3 fw-bold">
-                Témoignages et avis
               </Nav.Link>
               {!isLoggedIn ? (
                 <Nav.Link

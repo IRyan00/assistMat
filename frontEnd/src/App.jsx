@@ -6,7 +6,6 @@ import Footer from "./components/Footer/Footer.jsx";
 import Home from "./pages/Home/Home.jsx";
 import Login from "./pages/Login/Login.jsx";
 import About from "./pages/About/About.jsx";
-import Reviews from "./pages/Reviews/Reviews.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import ProtectDashboard from "../utils/ProtectDashboard.jsx";
 
@@ -19,7 +18,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/reviews" element={<Reviews />} />
           <Route
             path="/dashboard"
             element={

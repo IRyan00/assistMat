@@ -2,3 +2,7 @@
 .accordion-body {
   background-color: var(--primary-color);
 }
+
+#back {
+  background-color: var(--primary-color);
+}

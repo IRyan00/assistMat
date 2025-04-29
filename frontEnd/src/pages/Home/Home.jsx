@@ -25,7 +25,7 @@ const Home = () => {
 
       <WcmInfos />
 
-      <hr className="my-5 col-10 mx-auto" />
+      {/* <hr className="my-5 col-10 mx-auto" /> */}
 
       <Fquestions />
 

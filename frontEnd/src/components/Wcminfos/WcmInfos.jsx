@@ -2,20 +2,28 @@ import React, { useState } from "react";
 import "./WcmInfos.css";
 import { Container, Row, Col, Modal, Button } from "react-bootstrap";
 import {
-  FaCalendarAlt,
-  FaClock,
-  FaPiggyBank,
-  FaBaby,
-  FaChair,
   FaBreadSlice,
   FaBook,
   FaTree,
   FaPuzzlePiece,
   FaPaintBrush,
   FaPen,
-  FaArrowRight,
-  FaChild,
 } from "react-icons/fa";
+import {
+  MousePointerClick,
+  RockingChair,
+  Baby,
+  CalendarDays,
+  Clock,
+  PiggyBank,
+  Activity,
+  Puzzle,
+  Book,
+  Utensils,
+  Shrub,
+  Pen,
+  Brush,
+} from "lucide-react";
 
 const WcmInfos = () => {
   const [showModal, setShowModal] = useState(false);
@@ -43,14 +51,14 @@ const WcmInfos = () => {
           >
             <Row className="align-items-center">
               <Col className="text-center">
-                <FaChair size={50} className="p-0 mb-2" />
-                <h5 className="mb-5">Places : 4/4</h5>
-                <p className="text-danger mb-0 fw-bold">
+                <RockingChair size={50} className="p-0 mb-2" />
+                <h5 className="mb-5">Places</h5>
+                <p className="mb-0 fw-bold">
                   Plus de place <br /> disponible
                 </p>
                 <p className="mt-4 mb-0">
                   {" "}
-                  <FaArrowRight />
+                  <MousePointerClick />
                 </p>
               </Col>
             </Row>
@@ -65,14 +73,14 @@ const WcmInfos = () => {
           >
             <Row className="align-items-center">
               <Col className="text-center">
-                <FaBaby size={50} className="p-0 mb-2" />
-                <h5 className="mb-5">Âge :</h5>
+                <Baby size={50} className="p-0 mb-2" />
+                <h5 className="mb-5">Âge</h5>
                 <p className="mb-0">
                   De 0 <br /> à 3 ans
                 </p>
                 <p className="mt-4 mb-0">
                   {" "}
-                  <FaArrowRight />
+                  <MousePointerClick />
                 </p>
               </Col>
             </Row>
@@ -87,14 +95,14 @@ const WcmInfos = () => {
           >
             <Row className="align-items-center">
               <Col className="text-center">
-                <FaCalendarAlt size={50} className="p-0 mb-2" />
-                <h5 className="mb-5">Jours :</h5>
+                <CalendarDays size={50} className="p-0 mb-2" />
+                <h5 className="mb-5">Jours</h5>
                 <p className=" mb-0">
                   Du Mardi <br /> au Vendredi
                 </p>
                 <p className="mt-4 mb-0">
                   {" "}
-                  <FaArrowRight />
+                  <MousePointerClick />
                 </p>
               </Col>
             </Row>
@@ -109,14 +117,14 @@ const WcmInfos = () => {
           >
             <Row className="align-items-center">
               <Col className="text-center">
-                <FaClock size={50} className="p-0 mb-2" />
-                <h5 className="mb-5">Horaires :</h5>
+                <Clock size={50} className="p-0 mb-2" />
+                <h5 className="mb-5">Horaires</h5>
                 <p className="mb-0">
                   De 8h00 <br /> à 18h30
                 </p>
                 <p className="mt-4 mb-0">
                   {" "}
-                  <FaArrowRight />
+                  <MousePointerClick />
                 </p>
               </Col>
             </Row>
@@ -140,15 +148,15 @@ const WcmInfos = () => {
           >
             <Row className="align-items-center">
               <Col className="text-center">
-                <FaPiggyBank size={50} className="p-0 mb-2" />
-                <h5 className="mb-5">Tarifs :</h5>
+                <PiggyBank size={50} className="p-0 mb-2" />
+                <h5 className="mb-5">Tarifs</h5>
                 <p className="mb-0">
                   4.50€ de l'heure
                   <br /> 2.00€ de charges
                 </p>
                 <p className="mt-4 mb-0">
                   {" "}
-                  <FaArrowRight />
+                  <MousePointerClick />
                 </p>
               </Col>
             </Row>
@@ -162,24 +170,24 @@ const WcmInfos = () => {
                 "Activités",
                 <Row className="align-items-center justify-content-center text-center gap-4">
                   <Col xs={5}>
-                    <FaTree size={50} className="p-0 mb-1" />
+                    <Shrub size={50} className="p-0 mb-1" />
                     <h5 className="mb-3">Parc</h5>
 
-                    <FaBreadSlice size={50} className="p-0 mb-1" />
+                    <Utensils size={50} className="p-0 mb-1" />
                     <h5 className="mb-3">Pic-nic</h5>
 
-                    <FaBook size={50} className="p-0 mb-1" />
+                    <Book size={50} className="p-0 mb-1" />
                     <h5>Bibliothèque</h5>
                   </Col>
 
                   <Col xs={5}>
-                    <FaPuzzlePiece size={50} className="p-0 mb-1" />
+                    <Puzzle size={50} className="p-0 mb-1" />
                     <h5 className="mb-3">Puzzle</h5>
 
-                    <FaPaintBrush size={50} className="p-0 mb-1" />
+                    <Brush size={50} className="p-0 mb-1" />
                     <h5 className="mb-3">Peinture</h5>
 
-                    <FaPen size={50} className="p-0 mb-1" />
+                    <Pen size={50} className="p-0 mb-1" />
                     <h5>Dessin</h5>
                   </Col>
                 </Row>
@@ -188,15 +196,15 @@ const WcmInfos = () => {
           >
             <Row className="align-items-center">
               <Col className="text-center">
-                <FaChild size={50} className="p-0 mb-2" />
-                <h5 className="mb-5">Activités :</h5>
+                <Activity size={50} className="p-0 mb-2" />
+                <h5 className="mb-5">Activités</h5>
                 <p className="mb-0 row mx-auto justify-content-center align-items-center">
-                  <FaPuzzlePiece size={50} className="col-6 p-0 mb-1" />
-                  <FaBook size={45} className="col-6 p-0 mb-1" />
+                  <Puzzle size={50} className="col-6 p-0 mb-1" />
+                  <Book size={45} className="col-6 p-0 mb-1" />
                 </p>
                 <p className="mt-4 mb-0">
                   {" "}
-                  <FaArrowRight />
+                  <MousePointerClick />
                 </p>
               </Col>
             </Row>

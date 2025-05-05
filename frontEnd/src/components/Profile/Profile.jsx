@@ -16,8 +16,11 @@ const Profiles = ({ profiles }) => {
           <p className="my-5" key={profiles.id}>
             {profiles.desc}
           </p>
-          <p className="my-5" key={profiles.id}>
-            Diplômes et formations : {profiles.school}
+          <p className="my-5 text-center" key={profiles.id}>
+            {/* Diplômes et formations :{" "} */}
+            <button id="btn" className="btn btn-primary">
+              {profiles.school}
+            </button>
           </p>
         </Row>
       </Container>

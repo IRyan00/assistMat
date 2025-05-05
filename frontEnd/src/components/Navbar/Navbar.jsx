@@ -105,14 +105,6 @@ function CustomNavbar() {
             >
               A propos
             </Nav.Link>
-            <Nav.Link
-              as={Link}
-              to="/reviews"
-              className="text-black fw-bold text-end mb-3"
-              onClick={() => setShowSidebar(false)}
-            >
-              Témoignages et avis
-            </Nav.Link>
             {!isLoggedIn ? (
               <Nav.Link
                 className="text-black fw-bold text-end mb-3"

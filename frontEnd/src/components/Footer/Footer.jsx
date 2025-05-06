@@ -132,7 +132,7 @@ const Footer = () => {
                   variant="success"
                   type="submit"
                   disabled={isLoading}
-                  className="col-3 my-3 border-0"
+                  className="col-4 my-3 border-0"
                 >
                   {isLoading ? (
                     <Spinner animation="border" size="sm" />

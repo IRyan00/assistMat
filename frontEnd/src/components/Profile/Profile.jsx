@@ -1,6 +1,12 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
 const Profiles = ({ profiles }) => {
+  const schools = Array.isArray(profiles.school)
+    ? profiles.school
+    : typeof profiles.school === "string"
+    ? profiles.school.split(",")
+    : [];
+
   return (
     <>
       <Container className="col-10 mx-auto">
@@ -16,12 +22,13 @@ const Profiles = ({ profiles }) => {
           <p className="my-5" key={profiles.id}>
             {profiles.desc}
           </p>
-          <p className="my-5 text-center" key={profiles.id}>
-            {/* Diplômes et formations :{" "} */}
-            <button id="btn" className="btn btn-primary">
-              {profiles.school}
-            </button>
-          </p>
+          <div className="my-5 text-center">
+            {schools.map((diploma, index) => (
+              <button key={index} className="btn btn-primary m-2">
+                {diploma.trim()}
+              </button>
+            ))}
+          </div>
         </Row>
       </Container>
     </>

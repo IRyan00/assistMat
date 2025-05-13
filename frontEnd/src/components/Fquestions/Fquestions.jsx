@@ -5,33 +5,33 @@ const Fquestions = () => {
   const faqs = [
     {
       id: 1,
-      question: "Quels sont les horaires de sieste et de repas ?",
+      question: "Quels sont vos horaires d’accueil ?",
       answer:
-        "Le repas est aux environs de 12h et la sieste aux environs de 13h",
+        "Je travaille du lundi au vendredi, de 7h30 à 18h30. Des ajustements peuvent être envisagés selon les besoins spécifiques des familles, dans la limite du raisonnable.",
     },
     {
       id: 2,
-      question: "Quels sont les horaires de sieste et de repas ?",
+      question: "Acceptez-vous les enfants en périscolaire ?",
       answer:
-        "Le repas est aux environs de 12h et la sieste aux environs de 13h",
+        "Oui, j’accueille les enfants en périscolaire, selon les disponibilités. Cela comprend les temps avant et après l’école, ainsi que les vacances scolaires.",
     },
     {
       id: 3,
-      question: "Quels sont les horaires de sieste et de repas ?",
+      question: "Proposez-vous des repas faits maison ?",
       answer:
-        "Le repas est aux environs de 12h et la sieste aux environs de 13h",
+        "Oui, les repas et les collations sont préparés maison, avec des produits frais et adaptés à l’âge de chaque enfant. En cas d’allergie ou de régime particulier, un menu personnalisé est prévu.",
     },
     {
       id: 4,
-      question: "Quels sont les horaires de sieste et de repas ?",
+      question: "Comment se passe l’adaptation de l’enfant ?",
       answer:
-        "Le repas est aux environs de 12h et la sieste aux environs de 13h",
+        "L’adaptation se fait progressivement sur une à deux semaines. Cela permet à l’enfant, comme aux parents, de s’habituer au nouvel environnement en toute sérénité.",
     },
     {
       id: 5,
-      question: "Quels sont les horaires de sieste et de repas ?",
+      question: "Êtes-vous agréée et assurée ?",
       answer:
-        "Le repas est aux environs de 12h et la sieste aux environs de 13h",
+        "Oui, je suis agréée par le Conseil Départemental et je dispose d’une assurance responsabilité civile professionnelle couvrant l’ensemble de mon activité.",
     },
   ];
 
@@ -40,26 +40,22 @@ const Fquestions = () => {
       <Container className="my-5 pb-5 pt-3 col-10 col-md-8 mx-auto">
         <Container className="text-center my-5">
           <h2 className="h1">F.A.Q.</h2>
-          <p className="fst-italic fw-lighter">
-            Vous avez des interrogations ?
-          </p>
         </Container>
 
         <Container>
           <Accordion defaultActiveKey="0" className="border-0">
-            {faqs.map((faq) => (
-              <Accordion.Item
-                key={faq.id}
-                eventKey={faq.id}
-                className="border-0"
-              >
-                <Accordion.Header className="border-0">
-                  {faq.question}
-                </Accordion.Header>
-                <Accordion.Body className="border-0">
-                  {faq.answer}
-                </Accordion.Body>
-              </Accordion.Item>
+            {faqs.map((faq, index) => (
+              <div key={faq.id}>
+                <Accordion.Item eventKey={faq.id} className="border-0">
+                  <Accordion.Header className="border-0">
+                    {faq.question}
+                  </Accordion.Header>
+                  <Accordion.Body className="border-0">
+                    {faq.answer}
+                  </Accordion.Body>
+                </Accordion.Item>
+                {index < faqs.length - 1 && <hr />}
+              </div>
             ))}
           </Accordion>
         </Container>

@@ -7,7 +7,7 @@ import img3 from "../../assets/carouselImg/img3.jpg";
 const CarouselPage = () => {
   return (
     <Container fluid className="px-0">
-      <Carousel fade indicators={false} className="bg-dark shadow">
+      <Carousel fade indicators={true} className="bg-dark shadow">
         <Carousel.Item>
           <div className="carousel-image-container">
             <img

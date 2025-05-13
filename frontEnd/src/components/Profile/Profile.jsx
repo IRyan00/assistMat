@@ -1,4 +1,5 @@
 import { Container, Row } from "react-bootstrap";
+import "./Profile.css";
 
 const Profiles = ({ profiles }) => {
   const schools = Array.isArray(profiles.school)
@@ -22,9 +23,12 @@ const Profiles = ({ profiles }) => {
           <p className="my-5" key={profiles.id}>
             {profiles.desc}
           </p>
-          <div className="my-5 text-center">
+          <div id="btn" className="mb-5 text-center">
             {schools.map((diploma, index) => (
-              <button key={index} className="btn btn-primary m-2">
+              <button
+                key={index}
+                className="button btn m-2 rounded-pill shadow"
+              >
                 {diploma.trim()}
               </button>
             ))}

@@ -64,6 +64,7 @@ function CustomNavbar() {
                     Administration
                   </Nav.Link>
                   <Button
+                    className="border-black"
                     variant="outline-black"
                     size="sm"
                     onClick={handleLogout}

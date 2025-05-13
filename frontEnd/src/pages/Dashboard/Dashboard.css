@@ -1,3 +1,12 @@
-.profile-box {
+#profile {
   background-color: var(--primary-color);
+}
+
+#modif {
+  background-color: var(--accent-color);
+  border: none;
+}
+
+#textarea {
+  height: 250px;
 }

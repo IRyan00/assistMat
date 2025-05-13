@@ -100,106 +100,107 @@ const Dashboard = () => {
       <Container>
         <h1 className="text-center py-5">Administration</h1>
         <h2 className="text-center h4 mb-4">Modifier mon profil</h2>
-        <Row className="profile-box shadow my-5 justify-content-center rounded-3">
-          <ListGroup variant="flush" className="rounded-3">
-            {profile.map((profile) => (
-              <ListGroup.Item
-                key={profile._id}
-                className="profile-box p-3 border-bottom"
-              >
-                {editProfile && editProfile._id === profile._id ? (
-                  <Row className="align-items-center">
-                    <Col>
-                      <Form onSubmit={updateProfile}>
-                        <Form.Group className="mb-2">
-                          <Form.Control
-                            type="text"
-                            value={editProfile.name}
-                            onChange={(e) =>
-                              setEditProfile({
-                                ...editProfile,
-                                name: e.target.value,
-                              })
-                            }
-                          />
-                        </Form.Group>
-                        <Form.Group className="mb-2">
-                          <Form.Control
-                            as="textarea"
-                            type="text"
-                            value={editProfile.desc}
-                            onChange={(e) =>
-                              setEditProfile({
-                                ...editProfile,
-                                desc: e.target.value,
-                              })
-                            }
-                          />
-                        </Form.Group>
+        <ListGroup variant="flush" className="my-5 shadow rounded-3">
+          {profile.map((profile) => (
+            <ListGroup.Item
+              key={profile._id}
+              id="profile"
+              className="profile-box p-3"
+            >
+              {editProfile && editProfile._id === profile._id ? (
+                <Row className="align-items-center">
+                  <Col>
+                    <Form onSubmit={updateProfile}>
+                      <Form.Group className="mb-2">
                         <Form.Control
-                          className="mb-2"
-                          value={editProfile.school}
+                          type="text"
+                          value={editProfile.name}
                           onChange={(e) =>
                             setEditProfile({
                               ...editProfile,
-                              school: e.target.value,
-                            })
-                          }
-                        ></Form.Control>
-                        <Form.Control
-                          type="file"
-                          onChange={(e) =>
-                            setEditProfile({
-                              ...editProfile,
-                              imageFile: e.target.files[0],
+                              name: e.target.value,
                             })
                           }
                         />
-                        <Container className="d-flex justify-content-end">
-                          <Button
-                            type="submit"
-                            variant="success"
-                            className="mt-3"
-                          >
-                            Enregistrer
-                          </Button>
-                          <Button
-                            variant="secondary"
-                            className="mt-3 mx-2"
-                            onClick={() => setEditProfile(null)}
-                          >
-                            Annuler
-                          </Button>
-                        </Container>
-                      </Form>
-                    </Col>
-                  </Row>
-                ) : (
-                  <Row className="align-items-center col-11 mx-auto ">
-                    <h3 className="h3 text-center my-5">{profile.name}</h3>
-                    <Image
-                      fluid
-                      src={profile.image}
-                      alt={profile.name}
-                      className="rounded col-11 col-sm-9 col-md-7 col-lg-5 mx-auto"
-                    />
-                    <p className="text-center my-5">{profile.desc}</p>
+                      </Form.Group>
+                      <Form.Group className="mb-2">
+                        <Form.Control
+                          as="textarea"
+                          type="text"
+                          id="textarea"
+                          value={editProfile.desc}
+                          onChange={(e) =>
+                            setEditProfile({
+                              ...editProfile,
+                              desc: e.target.value,
+                            })
+                          }
+                        />
+                      </Form.Group>
+                      <Form.Control
+                        className="mb-2"
+                        value={editProfile.school}
+                        onChange={(e) =>
+                          setEditProfile({
+                            ...editProfile,
+                            school: e.target.value,
+                          })
+                        }
+                      ></Form.Control>
+                      <Form.Control
+                        type="file"
+                        onChange={(e) =>
+                          setEditProfile({
+                            ...editProfile,
+                            imageFile: e.target.files[0],
+                          })
+                        }
+                      />
+                      <Container className="d-flex justify-content-end">
+                        <Button
+                          type="submit"
+                          variant="success"
+                          className="mt-3"
+                        >
+                          Enregistrer
+                        </Button>
+                        <Button
+                          variant="secondary"
+                          className="mt-3 mx-2"
+                          onClick={() => setEditProfile(null)}
+                        >
+                          Annuler
+                        </Button>
+                      </Container>
+                    </Form>
+                  </Col>
+                </Row>
+              ) : (
+                <Row className="align-items-center col-11 mx-auto ">
+                  <h3 className="h3 text-center my-5">{profile.name}</h3>
+                  <Image
+                    fluid
+                    src={profile.image}
+                    alt={profile.name}
+                    className="rounded col-11 col-sm-9 col-md-7 col-lg-5 mx-auto"
+                  />
+                  <p className="text-center my-5">{profile.desc}</p>
 
-                    <p>Diplômes et formations : {profile.school}</p>
-                    <div className="my-5 d-flex flex-column flex-sm-row gap-2 justify-content-end">
-                      <Button
-                        variant="success"
-                        onClick={() => setEditProfile(profile)}
-                      >
-                        Modifier
-                      </Button>
-                    </div>
-                  </Row>
-                )}
-              </ListGroup.Item>
-            ))}
-          </ListGroup>
-        </Row>
+                  <p>Diplômes et formations : {profile.school}</p>
+                  <div className="my-5 d-flex flex-column gap-2 justify-content-center">
+                    <Button
+                      id="modif"
+                      className="col-5 mx-auto"
+                      onClick={() => setEditProfile(profile)}
+                    >
+                      Modifier
+                    </Button>
+                  </div>
+                </Row>
+              )}
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
       </Container>
     </>
   );

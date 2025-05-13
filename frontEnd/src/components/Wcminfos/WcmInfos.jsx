@@ -2,14 +2,6 @@ import React, { useState } from "react";
 import "./WcmInfos.css";
 import { Container, Row, Col, Modal, Button } from "react-bootstrap";
 import {
-  FaBreadSlice,
-  FaBook,
-  FaTree,
-  FaPuzzlePiece,
-  FaPaintBrush,
-  FaPen,
-} from "react-icons/fa";
-import {
   MousePointerClick,
   RockingChair,
   Baby,
@@ -56,10 +48,7 @@ const WcmInfos = () => {
                 <p className="mb-0 fw-bold">
                   Plus de place <br /> disponible
                 </p>
-                <p className="mt-4 mb-0">
-                  {" "}
-                  <MousePointerClick />
-                </p>
+                <p className="mt-4 mb-0"></p>
               </Col>
             </Row>
           </Container>
@@ -78,10 +67,7 @@ const WcmInfos = () => {
                 <p className="mb-0">
                   De 0 <br /> à 3 ans
                 </p>
-                <p className="mt-4 mb-0">
-                  {" "}
-                  <MousePointerClick />
-                </p>
+                <p className="mt-4 mb-0"></p>
               </Col>
             </Row>
           </Container>
@@ -100,10 +86,7 @@ const WcmInfos = () => {
                 <p className=" mb-0">
                   Du Mardi <br /> au Vendredi
                 </p>
-                <p className="mt-4 mb-0">
-                  {" "}
-                  <MousePointerClick />
-                </p>
+                <p className="mt-4 mb-0"></p>
               </Col>
             </Row>
           </Container>
@@ -122,10 +105,7 @@ const WcmInfos = () => {
                 <p className="mb-0">
                   De 8h00 <br /> à 18h30
                 </p>
-                <p className="mt-4 mb-0">
-                  {" "}
-                  <MousePointerClick />
-                </p>
+                <p className="mt-4 mb-0"></p>
               </Col>
             </Row>
           </Container>
@@ -154,10 +134,7 @@ const WcmInfos = () => {
                   4.50€ de l'heure
                   <br /> 2.00€ de charges
                 </p>
-                <p className="mt-4 mb-0">
-                  {" "}
-                  <MousePointerClick />
-                </p>
+                <p className="mt-4 mb-0"></p>
               </Col>
             </Row>
           </Container>
@@ -202,14 +179,15 @@ const WcmInfos = () => {
                   <Puzzle size={50} className="col-6 p-0 mb-1" />
                   <Book size={45} className="col-6 p-0 mb-1" />
                 </p>
-                <p className="mt-4 mb-0">
-                  {" "}
-                  <MousePointerClick />
-                </p>
+                <p className="mt-4 mb-0"></p>
               </Col>
             </Row>
           </Container>
         </Container>
+        <p className="text-center fst-italic fw-lighter">
+          * Cliquez sur les différents panneaux pour avoir plus d'informations{" "}
+          <MousePointerClick />
+        </p>
       </Container>
 
       <Modal show={showModal} onHide={() => setShowModal(false)} centered>

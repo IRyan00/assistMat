@@ -1,13 +1,13 @@
 <a id="readme-top"></a>
 
-<h1 align="center">Site vitrine</h1>
-<h2 align="center">Site vitrine pour une assitante maternelle</h2>
+<h1 align="center">Projet de stage</h1>
+<h2 align="center">Site vitrine pour une assistante maternelle</h2>
 
 <h3 align="center">À propos<h3>
 
 <div align="center">
 
-C'est un projet qui a été réalisé pour une assistante maternelle durant le stage de fin de formation  
+C'est un projet qui a été réalisé pour une assistante maternelle durant mon stage de fin de formation  
 "TP - Développeur Web et Web Mobile" à l'AFEC de Bayonne.
 
 </div>
@@ -61,7 +61,7 @@ C'est un projet qui a été réalisé pour une assistante maternelle durant le s
 1.  Cloner le répertoire :
 
     ```sh
-    git clone https://github.com/IRyan00/EvalBackEnd.git
+    git clone https://github.com/IRyan00/assistMat.git
     ```
 
 <br/>
@@ -101,12 +101,12 @@ C'est un projet qui a été réalisé pour une assistante maternelle durant le s
 
     ```ini
     #API
-    	VITE_API_URL = votre_api_url
+    VITE_API_URL = votre_api_url
 
-    	# Emailjs
-    	VITE_SERVICE_ID= votre_service_id
-    	VITE_TEMPLATE_ID= votre_template_id
-    	VITE_PUBLIC_KEY= votre_public_key
+    # Emailjs
+    VITE_SERVICE_ID= votre_service_id
+    VITE_TEMPLATE_ID= votre_template_id
+    VITE_PUBLIC_KEY= votre_public_key
 
     # Google reCaptcha
     VITE_RECAPTCHA_SITE_KEY= votre_recaptcha_site_key
@@ -165,7 +165,7 @@ C'est un projet qui a été réalisé pour une assistante maternelle durant le s
     "react-hook-form": "^7.54.2",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.4.0"
-  }
+  },
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -175,81 +175,119 @@ C'est un projet qui a été réalisé pour une assistante maternelle durant le s
 ```bash
 evalBackEnd/                             # Dossier racine du projet
 ├── backEnd/                             # Backend de l'application
-│   ├── logs/
-│   │   └── log.log                      # Fichier de logs de l'application
+│   ├── node_modules/                    # Dépendances installées via npm (auto-généré)
 │   │
-│   ├── src/
-│   │   ├── config/                      # Configuration du backend
-│   │   │   ├── db.js                    # Configuration de la connexion MongoDB
-│   │   │   └── logg.js                  # Configuration des options de logs
+│   ├── src/                             # Code source principal du backend
+│   │   ├── config/                      # Dossier de configuration
+│   │   │   └── db.js                    # Fichier de configuration de la base de données MongoDB
 │   │   │
-│   │   ├── controllers/                 # Logique métier (fonctions appelées par les routes)
-│   │   │   ├── authController.js        # Gestion de l'authentification et des utilisateurs
-│   │   │   └── skillsController.js      # Gestion des compétences
+│   │   ├── controllers/                 # Contient la logique métier de l'application
+│   │   │   ├── authController.js        # Gère l'authentification et la gestion des utilisateurs
+│   │   │   ├── profileController.js     # Gère les opérations liées aux profils
+│   │   │   └── reviewController.js      # Gère les avis (reviews)
 │   │   │
 │   │   ├── middlewares/                 # Fonctions intermédiaires pour les requêtes HTTP
-│   │   │   ├── authMiddleware.js        # Vérification de l'authentification
-│   │   │   ├── isAdmin.js               # Vérification des droits administrateurs
-│   │   │   ├── morganMiddleware.js      # Middleware de gestion des logs HTTP avec Morgan
-│   │   │   └── recaptchaMiddleware.js   # Vérification du reCaptcha
+│   │   │   ├── authMiddleware.js        # Vérifie si l'utilisateur est authentifié
+│   │   │   ├── isAdmin.js               # Vérifie si l'utilisateur a les droits d'admin
+│   │   │   └── recaptchaMiddleware.js   # Valide le reCAPTCHA Google
 │   │   │
-│   │   ├── models/                      # Modèles de données MongoDB (schemas Mongoose)
-│   │   │   ├── User.js                  # Modèle utilisateur
-│   │   │   ├── Skills.js                # Modèle compétence
-│   │   │   └── Settings.js              # Modèle paramètres d'application
+│   │   ├── models/                      # Schémas de données Mongoose (MongoDB)
+│   │   │   ├── Profile.js               # Schéma pour les profils utilisateurs
+│   │   │   ├── Review.js                # Schéma pour les avis
+│   │   │   └── User.js                  # Schéma pour les utilisateurs
 │   │   │
-│   │   └── routes/                      # Définition des routes de l'API
-│   │       ├── authRoutes.js            # Routes pour l'authentification et les utilisateurs
-│   │       └── skillsRoutes.js          # Routes pour les compétences
+│   │   ├── routes/                      # Définition des routes de l'API REST
+│   │   │   ├── authRoutes.js            # Routes pour l'authentification
+│   │   │   ├── profileRoutes.js         # Routes pour les profils
+│   │   │   └── reviewRoutes.js          # Routes pour les avis
+│   │   │
+│   │   └── validations/                 # Fichiers de validation des données
+│   │       └── reviewValidation.js      # Règles de validation pour les avis
 │   │
-│   ├── .env                            # Variables d'environnement (ex : clés API)
-│   ├── .gitignore                      # Fichiers et dossiers à ignorer par Git
-│   ├── package-lock.json                # Versionnement des dépendances Node.js
-│   ├── package.json                     # Dépendances et scripts du projet backend
-│   └── server.js                        # Point d'entrée du serveur Express
+│   ├── .env                             # Variables d'environnement (clés, URL, secrets)
+│   ├── .gitignore                       # Fichiers/dossiers ignorés par Git
+│   ├── package-lock.json                # Verrouillage des versions des dépendances npm
+│   ├── package.json                     # Configuration du projet backend (scripts, dépendances)
+│   └── server.js                        # Point d'entrée du serveur Express.js
 │
-├── frontend/                           # Frontend de l'application (React)
-│   ├── src/
-│   │   ├── assets/                      # Fichiers statiques (images, polices, etc.)
-│   │   │   └── carouselImages            # Images du carousel
-│   │   │       ├── img1.jgp              # 1ère image du carousel
-│   │   │       ├── img2.jgp              # 2ème image du carousel
-│   │   │       └── img3.jgp              # 3ème image du carousel
+├── frontend/                            # Frontend de l'application (React)
+│   ├── src/                             # Code source principal du frontend
+│   │   ├── assets/                      # Ressources statiques (images, icônes, etc.)
+│   │   │   └── carouselImg              # Images utilisées dans le composant Carousel
+│   │   │       ├── img1.jgp             # Première image du carousel
+│   │   │       ├── img2.jgp             # Deuxième image du carousel
+│   │   │       └── img3.jgp             # Troisième image du carousel
 │   │   │
-│   │   ├── components/                  # Composants réutilisables React
-│   │   │   ├── CarouselPage.jsx          # Composant carousel
-│   │   │   ├── Footer.jsx                # Composant footer
-│   │   │   ├── Navbar.jsx                # Composant barre de navigation
-│   │   │   ├── Presentation.jsx          # Composant présentation
-│   │   │   └── SkillCard.jsx             # Composant carte de compétence
+│   │   ├── components/                  # Composants réutilisables de l'interface utilisateur
+│   │   │   ├── Carousel/                # Composant du carousel d'images
+│   │   │   │   ├── Carousel.css         # Style du carousel
+│   │   │   │   └── Carousel.jsx         # Code React du carousel
+│   │   │   ├── Contact/                 # Composant formulaire de contact
+│   │   │   │   ├── Contact.css
+│   │   │   │   └── Contact.jsx
+│   │   │   ├── Footer/                  # Pied de page du site
+│   │   │   │   ├── Footer.css
+│   │   │   │   └── Footer.jsx
+│   │   │   ├── Fquestions/              # Composant pour les FAQ
+│   │   │   │   ├── Fquestions.css
+│   │   │   │   └── Fquestions.jsx
+│   │   │   ├── Navbar/                  # Barre de navigation du site
+│   │   │   │   ├── Navbar.css
+│   │   │   │   └── Navbar.jsx
+│   │   │   ├── Profile/                 # Composant pour l'affichage ou édition de profil
+│   │   │   │   ├── Profile.css
+│   │   │   │   └── Profile.jsx
+│   │   │   ├── ReviewModal/             # Composant modal pour laisser un avis
+│   │   │   │   ├── ReviewModal.css
+│   │   │   │   └── ReviewModal.jsx
+│   │   │   ├── Rooms/                   # Composant d'affichage des chambres
+│   │   │   │   ├── Rooms.css
+│   │   │   │   └── Rooms.jsx
+│   │   │   ├── StaticAbout/             # Composant de page "À propos"
+│   │   │   │   ├── StaticAbout.css
+│   │   │   │   └── StaticAbout.jsx
+│   │   │   └── Wcminfos/                # Informations sur les WC (contextuel à ton app)
+│   │   │       ├── WcmInfos.css
+│   │   │       └── WcmInfos.jsx
+│   │   │
+│   │   ├── hooks/                       # Hooks personnalisés React
+│   │   │   └── reCaptchaV3.jsx          # Hook pour gérer Google reCAPTCHA v3
 │   │   │
 │   │   ├── pages/                       # Pages principales du site
-│   │   │   ├── Dashboard.jsx             # Page du tableau de bord (après connexion)
-│   │   │   ├── Home.jsx                  # Page d'accueil
-│   │   │   ├── Login.jsx                 # Page de connexion
-│   │   │   ├── Register.jsx              # Page d'inscription
-│   │   │   └── Skills.jsx                # Page d'affichage des compétences
-│   │   │
-│   │   ├── styles/                      # Feuilles de style CSS
-│   │   │   └── navbar.css                # Style de la barre de navigation
+│   │   │   ├── About/                   # Page "À propos"
+│   │   │   │   ├── About.css
+│   │   │   │   └── About.jsx
+│   │   │   ├── Dashboard/               # Tableau de bord utilisateur
+│   │   │   │   ├── Dashboard.css
+│   │   │   │   └── Dashboard.jsx
+│   │   │   ├── Home/                    # Page d'accueil
+│   │   │   │   ├── Home.css
+│   │   │   │   └── Home.jsx
+│   │   │   ├── Login/                   # Page de connexion
+│   │   │   │   ├── Login.css
+│   │   │   │   └── Login.jsx
+│   │   │   └── Reviews/                 # Page de gestion/affichage des avis
+│   │   │       ├── Reviews.css
+│   │   │       └── Reviews.jsx
 │   │   │
 │   │   ├── App.css                      # Style global de l'application
 │   │   ├── App.jsx                      # Composant racine de l'application React
-│   │   ├── index.css                    # Styles globaux
-│   │   └── main.jsx                     # Point d'entrée React
+│   │   ├── index.css                    # CSS global (reset ou thèmes)
+│   │   ├── main.jsx                     # Point d'entrée React (montage dans le DOM)
+│   │   └── variables.css                # Fichier CSS pour les variables de thème (couleurs, tailles)
 │   │
-│   ├── utils/                          # Fonctions utilitaires
-│   │   └── ProtectedRoutes.jsx           # Protection des routes (authentification)
+│   ├── utils/                           # Fonctions utilitaires pour le frontend
+│   │   └── ProtecteDashboard.jsx        # Composant de protection de route (authentification)
 │   │
-│   ├── .env                            # Variables d'environnement pour le frontend
-│   ├── .gitignore                      # Fichiers à ignorer par Git (frontend)
-│   ├── eslint.config.js                 # Configuration ESLint (linting du code)
-│   ├── index.html                       # Page HTML principale
-│   ├── package-lock.json                # Versionnement des dépendances Node.js
-│   └── package.json                     # Dépendances et scripts du projet frontend
+│   ├── .env                             # Variables d’environnement pour le frontend (développement)
+│   ├── .env.production                  # Variables d’environnement pour la production
+│   ├── .gitignore                       # Fichiers à ignorer dans Git (frontend)
+│   ├── eslint.config.js                 # Configuration ESLint pour le linting du code React
+│   ├── index.html                       # Fichier HTML principal de l'application React
+│   ├── package-lock.json                # Fichier de verrouillage des versions npm (frontend)
+│   └── package.json                     # Dépendances, scripts et métadonnées du frontend
 │
-└── README.md                           # Documentation du projet (installation, usage)
-
+└── README.md                            # Documentation du projet (installation, usage, etc.)
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -257,26 +295,23 @@ evalBackEnd/                             # Dossier racine du projet
 ## Tests et Visualisation
 
 - **MongoDB Compass** : Visualisation des données
-- **Postman** : Tests des routes API - [Collection postman](https://www.postman.com/iryan00/my-workspace/collection/3b0arvv/evalbackend?action=share&creator=6356318)
+- **Postman** : Tests des routes API - [Collection postman](https://www.postman.com/iryan00/workspace/my-workspace/collection/6356318-338aefc8-68fb-4b6a-b34d-e60d0e015d02?action=share&creator=6356318&active-environment=6356318-30c28511-e732-4628-8260-6ef6538ef3d0)
 
 </br>
 <div align="center">
 
-| Method | Path                        | Desc                            |
-| :----- | :-------------------------- | :------------------------------ |
-| POST   | /api/auth/login             | Connecter un utilisateur        |
-|        |                             |                                 |
-| POST   | /api/skills/addskill        | Ajouter une compétence          |
-| GET    | /api/skills/getallskills    | Afficher toutes les compétences |
-| PUT    | /api/skills/updateskill/:id | Modifier une compétence         |
-| DEL    | /api/skills/deleteskill/:id | Supprimer une compétence        |
+| Method | Path                     | Desc                     |
+| :----- | :----------------------- | :----------------------- |
+| POST   | /api/auth/login          | Connecter un utilisateur |
+| GET    | /api/profile/get         | Afficher le profile      |
+| PUT    | /api/profile/updates/:id | Modifier le profile      |
 
 </div>
 
 ## Déploiement
 
-### [ Backend - Render ](https://evalbackend-sp7c.onrender.com)
+### [ Backend - Render ](https://assistmat.onrender.com)
 
-### [ Frontend - Vercel ](https://eval-back-end.vercel.app/)
+### [ Frontend - Vercel ](https://assist-mat.vercel.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

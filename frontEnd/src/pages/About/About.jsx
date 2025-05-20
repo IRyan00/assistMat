@@ -8,7 +8,6 @@ import { Container, Row, Col } from "react-bootstrap";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const Profiles = () => {
-  // const [isLoading, setIsLoading] = useState(false);
   const [profiles, setProfiles] = useState([]);
 
   const getAuthHeaders = () => {

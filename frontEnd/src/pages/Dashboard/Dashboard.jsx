@@ -102,11 +102,7 @@ const Dashboard = () => {
         <h2 className="text-center h4 mb-4">Modifier mon profil</h2>
         <ListGroup variant="flush" className="my-5 shadow rounded-3">
           {profile.map((profile) => (
-            <ListGroup.Item
-              key={profile._id}
-              id="profile"
-              className="profile-box p-3"
-            >
+            <ListGroup.Item key={profile._id} id="profile" className="p-3">
               {editProfile && editProfile._id === profile._id ? (
                 <Row className="align-items-center">
                   <Col>
